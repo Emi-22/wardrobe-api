@@ -9,5 +9,5 @@ type Item struct {
 	Color          string    `json:"color"`
 	Brand          string    `json:"brand"`
 	Favorite       bool      `json:"favorite"`
-	CreatedAt      time.Time `json:"createdat"`
+	CreatedAt      time.Time `json:"created_at"`
 }
