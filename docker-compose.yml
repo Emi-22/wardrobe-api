@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: wardrobe-db
+    environment:
+      POSTGRES_USER: closet_user
+      POSTGRES_PASSWORD: closet_pass
+      POSTGRES_DB: closet_db
+    ports: 
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations/migrations.sql:/docker-entrypoint-initdb.d/migrations.sql
+
+volumes:
+  postgres_data:

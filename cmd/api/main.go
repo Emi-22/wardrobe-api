@@ -1,0 +1,28 @@
+package main
+
+import (
+	"log"
+	"net/http"
+
+	"github.com/Emi-22/wardrobe-api/internal/db"
+	"github.com/Emi-22/wardrobe-api/internal/handlers"
+	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
+)
+
+func main() {
+	_ = godotenv.Load()
+
+	db.Connect()
+
+	r := mux.NewRouter()
+
+	r.HandleFunc("/items", handlers.GetItems).Methods("GET")
+	r.HandleFunc("/items/{id}", handlers.GetItemById).Methods("GET")
+	r.HandleFunc("/items", handlers.CreateItem).Methods("POST")
+	r.HandleFunc("/items/{id}", handlers.UpdateItem).Methods("PUT")
+	r.HandleFunc("/items/{id}", handlers.DeleteItem).Methods("DELETE")
+
+	log.Println("Server running on :8080")
+	log.Fatal(http.ListenAndServe(":8080", r))
+}
