@@ -12,5 +12,20 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./migrations/migrations.sql:/docker-entrypoint-initdb.d/migrations.sql
 
+  api:
+    image: wardrobe-api
+    container_name: wardrobe-api
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: closet_user
+      DB_PASSWORD: closet_pass
+      DB_NAME: closet_db
+      DB_SSLMODE: disable
+    depends_on:
+      - db
+
 volumes:
   postgres_data:
