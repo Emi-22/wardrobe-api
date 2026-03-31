@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/Emi-22/wardrobe-api/api/internal/db"
-	"github.com/Emi-22/wardrobe-api/api/internal/models"
+	"github.com/Emi-22/wardrobe-api/internal/db"
+	"github.com/Emi-22/wardrobe-api/internal/models"
 	"github.com/gorilla/mux"
 )
 
@@ -17,6 +17,7 @@ func GetItems(w http.ResponseWriter, r *http.Request) {
 	`)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 	defer rows.Close()
 
@@ -88,6 +89,7 @@ func CreateItem(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -104,6 +106,7 @@ func UpdateItem(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	err = db.DB.QueryRow(`
@@ -149,6 +152,7 @@ func DeleteItem(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	w.WriteHeader(http.StatusNoContent)
