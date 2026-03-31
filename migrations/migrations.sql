@@ -5,5 +5,5 @@ CREATE TABLE closet_items (
     color VARCHAR(30) NOT NULL,
     brand VARCHAR(50),
     favorite BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
