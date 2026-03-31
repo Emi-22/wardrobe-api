@@ -1,4 +1,4 @@
-module github.com/Emi-22/wardrope-api
+module github.com/Emi-22/wardrobe-api/api
 
 go 1.25.6
 

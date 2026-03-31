@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/Emi-22/wardrope-api/db"
-	"github.com/Emi-22/wardrope-api/models"
+	"github.com/Emi-22/wardrobe-api/api/internal/db"
+	"github.com/Emi-22/wardrobe-api/api/internal/models"
 	"github.com/gorilla/mux"
 )
 
